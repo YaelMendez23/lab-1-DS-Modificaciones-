@@ -4,17 +4,23 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
-    <title>EliminarVideo</title>
+    <title>Delete</title>
 </head>
 <body>
+   <form action="/Video/Create" method="post">
+
+<fieldset>
+
+<legend>Registra un Video</legend>
+
+<Label for ="idVideo">idVideo</Label>
+<input type="Text" name="idVideo"/>
 
 
-    <form action="Video/EliminarVideo" method="post">
+<input type="submit" name="name" value=" eliminar video" />
 
-   <label for="idVideos">idVideos:</label>
-   <input type="text" name="idVideos" />
-   
-   <input type="submit" name="name" value="Eliminar Video" />
-   </form>
+</fieldset>
+</form>
+
 </body>
 </html>

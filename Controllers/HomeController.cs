@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Data;
 using System.Data.SqlClient;
+using System.Configuration;
 
-using MVCPlantilla41.Utilerias;
+using MvcPlantilla.Utilerias;
+	
 
 
-
-namespace MvcPlantilla.Controllers
+namespace MvcPlantilla.Utilerias
 {
     public class HomeController : Controller
     {

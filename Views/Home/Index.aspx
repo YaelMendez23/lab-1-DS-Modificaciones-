@@ -10,13 +10,13 @@
 <body>
     
     <h1>menu</h1>
-    <a href="/video/Index">Vervideo</a>
+    <a href="/video/Create">Agregarvideo</a>
     <br />
-    <a href="/video/Create">AgregarVideo</a>
+    <a href="/video/Delete">Eliminar video</a>
     <br />
-    <a href="/video/Delete">EliminarVideo</a>
+    <a href="/video/Update">Actualizar video</a>
     <br />
-    <a href="/video/Update">modificarvideo</a>
+    <a href="/video/Index">buscar video</a>
     
 </body>
 </html>

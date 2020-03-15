@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
-using System.Data;
 using System.Data.SqlClient;
+using System.Data;
 
-using MVCPlantilla41.Utilerias;
-
+using MvcPlantilla.Utilerias;
+	
+		 
 
 
 namespace MvcPlantilla.Controllers
@@ -17,56 +17,93 @@ namespace MvcPlantilla.Controllers
     {
         //
    //Get:/video/
+
         public ActionResult Index()
         {
-            return View();
-        }
 
-        public ActionResult Vervideo()
-        {
-            //consultar la info en la bd
-            ViewData["video"] = BaseHelper.ejecutarConsulta(
-                  "Select * from video",
-                  CommandType.Text);
+ ViewData["video"] = BaseHelper.EjecutarConsulta("Select * from video",CommandType.Text);
 
             return View();
         }
-    [HttpPost]
-        public ActionResult AgregarVideo()
+
+        public ActionResult Create()
         {
+
+            return View();
+
+        }
+
+        [HttpPost]
+
+        public ActionResult Create(int idVideo, string titulo, int Repro, string Url)
+        {
+
             List<SqlParameter> parametros = new List<SqlParameter>();
-            parametros.Add(new SqlParameter("@idVideos", idVideos));
-            parametros.Add(new SqlParameter("@Titulo", Titulo));
-            parametros.Add(new SqlParameter("@NumReproducciones", NumReproducciones));
-            parametros.Add(new SqlParameter("@Url", Url));
-            BaseHelper.ejecutarSentencia("INSERT INTO Video " + "VALUES(@idVideos, @Titulo,@NumReproducciones, @Url)"
-            , CommandType.Text, parametros);
-            
 
-            return View("Mensaje");
+            parametros.Add(new SqlParameter("@idVideo", idVideo));
+
+            parametros.Add(new SqlParameter("@titulo", titulo));
+
+            parametros.Add(new SqlParameter("@Repro", Repro));
+
+            parametros.Add(new SqlParameter("@Url", Url));
+
+            BaseHelper.EjecutarSentencia("INSERT into Video values (@idVideo,@titulo,@Repro, @Url)", CommandType.Text, parametros);
+
+            return View();
+
         }
 
-    public ActionResult EliminarVideo()
-    {
-        List<SqlParameter> parametros = new List<SqlParameter>();
-        parametros.Add(new SqlParameter("@idVideos", idVideos));
-        BaseHelper.ejecutarSentencia("Delete From Video where idVideos=@idVideos", CommandType.Text, parametros);
-      
+        public ActionResult Delete()
+        {
 
-        return View();
+            return View();
+
+        }
+
+        [HttpPost]
+
+        public ActionResult Delete(int idVideo)
+        {
+
+            List<SqlParameter> parametros = new List<SqlParameter>();
+
+            parametros.Add(new SqlParameter("@idVideo", idVideo));
+
+            BaseHelper.EjecutarSentencia("Delete from Video Where @idVideo=idVideo", CommandType.Text, parametros);
+
+            return View();
+
+        }
+
+        public ActionResult Update()
+        {
+
+            return View();
+
+        }
+
+        [HttpPost]
+
+        public ActionResult Update(int idVideo, string titulo, int Repro, string Url)
+        {
+
+            List<SqlParameter> parametros = new List<SqlParameter>();
+
+            parametros.Add(new SqlParameter("@idVideo", idVideo));
+
+            parametros.Add(new SqlParameter("@titulo", titulo));
+
+            parametros.Add(new SqlParameter("@Repro", Repro));
+
+            parametros.Add(new SqlParameter("@Url", Url));
+
+            BaseHelper.EjecutarSentencia("UPDATE SET @idVideo=idVideo,@titulo=tiulo,@Repro=Repro, @Url=Url  Where @idVideo=idVideo", CommandType.Text, parametros);
+
+            return View();
+
+        }
+
     }
 
-    public ActionResult ActualizarVideo()
-    {
-        List<SqlParameter> parametros = new List<SqlParameter>();
-        parametros.Add(new SqlParameter("@idVideos", idVideos));
-        parametros.Add(new SqlParameter("@Titulo", Titulo));
-        parametros.Add(new SqlParameter("@NumReproducciones", NumReproducciones));
-        parametros.Add(new SqlParameter("@Url", Url));
-        BaseHelper.ejecutarSentencia("Update  Video" + "set(@idVideos, @Titulo,@NumReproducciones, @Url) Where idVideos=@idVideos", CommandType.Text, parametros);
-        return View();
-    }
-
-
-    }
-    }
+}

@@ -78,11 +78,12 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Utilerias\MvcPlantilla.csproj.user" />
     <Content Include="Views\Home\Index.aspx" />
-    <Content Include="Views\Video\ActualizarVideo.aspx" />
-    <Content Include="Views\Video\AgregarVideos.aspx" />
-    <Content Include="Views\Video\EliminarVideo.aspx" />
-    <Content Include="Views\Video\Vervideo.aspx" />
+    <Content Include="Views\Video\Create.aspx" />
+    <Content Include="Views\Video\Delete.aspx" />
+    <Content Include="Views\Video\Index.aspx" />
+    <Content Include="Views\Video\Update.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
